@@ -1,4 +1,6 @@
 
+const $table = $('#jeopardy');
+
 let categories = [];
 
 //Gets 6 random categories from jservice API
@@ -22,11 +24,11 @@ async function getCategory(catId) {
     `https://jservice.io/api/category?id=${catId}`
   );
 
-  //Access response.data and fetch 5 random clues to 
+  //Access response.data and fetch 5 random clues to
   const { data } = response;
   const ranClues = _.sampleSize(data.clues, 5);
 
-  //Crete a new clueArray and store the corresponding clue key:value pairs
+  //Create a new clueArray and store the corresponding clue key:value pairs
   const clueArray = ranClues.map((clue) => ({
     question: clue.question,
     answer: clue.answer,
@@ -49,15 +51,10 @@ async function getCategory(catId) {
  */
 
 async function fillTable() {
-
-
-
-
-
-
-
-
+  $table.addClass('container table-md table table-dark table-bordered');
+  //$('thead tr').attr('scope', 'row')
 }
+
 
 /** Handle clicking on a clue: show the question or answer.
  *

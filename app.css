@@ -1,0 +1,12 @@
+table{
+    text-align: center;
+}
+
+thead td{
+    height:50px;
+}
+
+tbody td{
+    height:100px;
+    
+}
