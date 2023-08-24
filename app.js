@@ -1,50 +1,40 @@
-import { sampleSize } from 'lodash';
 
-//https://jservice.io/api/categories?count=6 -> get categories -> each category has an ID
-//https://jservice.io/api/category?id=76 -> Use category ID to get clues and answers
-
-/** Get NUM_CATEGORIES random category from API.
- *
- * Returns array of category ids
- */
 let categories = [];
 
+//Gets 6 random categories from jservice API
 async function getCategoryIds() {
-    //find a way to randomize the categories 
-  let response = await axios.get('https://jservice.io/api/categories?count=100');
-  const randomCats = _.sampleSize(response.data, 6)
-    const idArray = randomCats.map((el) => `${el.id}`);
-    for (let id of idArray) {
-        await getCategory(id);
-    }
+  let response = await axios.get(
+    'https://jservice.io/api/categories?count=100'
+  );
+  //Randomly select 6 categories using Lodash sampleSize
+  const randomCats = _.sampleSize(response.data, 6);
+
+  //Create a new array containing category ids and push each one to getCategory()
+  const idArray = randomCats.map((el) => `${el.id}`);
+  for (let id of idArray) {
+    await getCategory(id);
+  }
 }
 
-/** Return object with data about a category:
- *
- *  Returns { title: "Math", clues: clue-array }
- *
- * Where clue-array is:
- *   [
- *      {question: "Hamlet Author", answer: "Shakespeare", showing: null},
- *      {question: "Bell Jar Author", answer: "Plath", showing: null},
- *      ...
- *   ]
- */
-
+//Returns an object with data about a category
 async function getCategory(catId) {
   let response = await axios.get(
     `https://jservice.io/api/category?id=${catId}`
   );
+
+  //Access response.data and fetch 5 random clues to 
   const { data } = response;
   const ranClues = _.sampleSize(data.clues, 5);
 
+  //Crete a new clueArray and store the corresponding clue key:value pairs
   const clueArray = ranClues.map((clue) => ({
     question: clue.question,
     answer: clue.answer,
     showing: null,
   }));
 
-  categories.push ({
+  //Push an object containing the category title and new clueArray
+  categories.push({
     title: data.title,
     clues: clueArray,
   });
@@ -58,7 +48,16 @@ async function getCategory(catId) {
  *   (initally, just show a "?" where the question/answer would go.)
  */
 
-async function fillTable() {}
+async function fillTable() {
+
+
+
+
+
+
+
+
+}
 
 /** Handle clicking on a clue: show the question or answer.
  *
