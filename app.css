@@ -1,12 +1,11 @@
 table{
     text-align: center;
-}
-
-thead td{
-    height:50px;
+    table-layout: fixed;
+       
 }
 
 tbody td{
-    height:100px;
-    
+    height: 200px
+
 }
+
