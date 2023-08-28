@@ -16,14 +16,14 @@
       href="https://fonts.googleapis.com/css?family=Copse&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="app.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="app.css" />
   </head>
-  <body>
-    <header id="header" class="row justify-content-center">
+  <body id="container">
+    <header id="header" class="col">
       <h1>Jeopardy!</h1>
       <button id="start">Start!</button>
     </header>
@@ -32,17 +32,15 @@
       <i class="fa fa-spin fa-spinner"></i>
     </div>
 
-    <table id="jeopardy" class="w-100">
-      <thead>
-        <tr scope="row"></tr>
-      </thead>
+    <table id="jeopardy">
+      <thead></thead>
       <tbody></tbody>
     </table>
 
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/lodash"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
